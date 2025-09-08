@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Green Earth | Build The Future</title>
+    <!-- favicon -->
+    <link
+      rel="shortcut icon"
+      href="./assets/hero-leaf1.png"
+      type="image/x-icon"
+    />
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="./style.css" />
+    <!-- tailwind and daisyUI -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- fontawesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header>
+      <nav class="bg-green-700">
+        <div class="navbar text-white md:w-10/12 md:mx-auto">
+          <div class="navbar-start">
+            <div class="dropdown">
+              <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />
+                </svg>
+              </div>
+              <ul
+                tabindex="0"
+                class="menu menu-sm dropdown-content bg-green-600 rounded-b-md z-1 mt-3 w-52 p-2 shadow"
+              >
+                <li><a>About</a></li>
+                <li>
+                  <a> Gallery </a>
+                </li>
+                <li><a>Plant a Tree</a></li>
+              </ul>
+            </div>
+            <a href="#" class="font-bold text-xl">Green Earth</a>
+          </div>
+          <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1">
+              <li><a>About</a></li>
+              <li>
+                <a> Gallery </a>
+              </li>
+              <li><a>Plant a Tree</a></li>
+            </ul>
+          </div>
+          <div class="navbar-end">
+            <a
+              class="btn bg-yellow-500 rounded-full text-green-800 hover:bg-yellow-200 outline-none shadow-none"
+              >Plant a Tree</a
+            >
+          </div>
+        </div>
+      </nav>
+      <section
+        class="banner grid grid-cols-3 pb-5 md:pb-0 md:grid-rows-2 lg:flex justify-between items-center text-center pt-8 bg-[#CFF0DC]"
+      >
+        <div
+          class="hidden md:block col-span-1 col-start-1 row-start-2 lg:flex-1"
+        >
+          <img src="./assets/hero-leaf1.png" alt="laef" />
+        </div>
+        <div class="space-y-4 col-span-3 row-start-1 lg:flex-1 px-4">
+          <h1 class="font-bold sm:text-nowrap text-3xl">
+            Plant a Tree, Grow a Future
+          </h1>
+          <p class="text-gray-800">
+            Join our mission to plant 1 million trees and make the Earth greener
+            for future generations.
+          </p>
+          <button
+            class="btn bg-yellow-400 rounded-full text-green-800 hover:bg-yellow-200 outline-none shadow-none"
+          >
+            Get Involved
+          </button>
+        </div>
+        <div
+          class="hidden md:block col-span-1 col-start-3 row-start-2 lg:flex-1"
+        >
+          <img src="./assets/hero-leaf2.png" alt="leaf" />
+        </div>
+      </section>
+    </header>
+
+    <script src="./Javascript/index.js"></script>
+  </body>
+</html>
