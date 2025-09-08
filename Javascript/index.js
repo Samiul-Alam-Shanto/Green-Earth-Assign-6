@@ -56,12 +56,12 @@ const displayPlants = (plants) => {
     <div class="card bg-base-100 h-[600px] p-1 shadow-sm">
               <figure>
                 <img
-                  class="h-[200px] w-full "
+                  class="h-[250px] w-full "
                   src="${plant.image}"
                   alt=""
                 />
               </figure>
-              <div class="card-body">
+              <div class="card-body p-2">
                 <h2 onclick="loadTreeDetails(${plant.id})" class="card-title">${plant.name}</h2>
                 <p class="text-gray-500">
                   ${plant.description}
@@ -75,8 +75,8 @@ const displayPlants = (plants) => {
                   </div>
                 </div>
                 <div>
-                  <button
-                    class="bg-green-600 w-full rounded-full p-2 text-white cursor-pointer"
+                  <button onclick="displayCart(this)"
+                    class=" bg-green-600 w-full rounded-full p-2 text-white cursor-pointer"
                   >
                     Add to Cart
                   </button>
@@ -122,6 +122,27 @@ const displayTreeDetails = (tree) => {
             </div>
             `;
   document.getElementById("my_modal").showModal();
+};
+
+//add to cart cards
+const displayCart = (btn) => {
+  const name = btn.parentNode.parentNode.childNodes[1].innerText;
+  const price = btn.parentNode.parentNode.childNodes[5].childNodes[3].innerText;
+
+  const cartContainer = document.getElementById("cart-container");
+  const cartCard = document.createElement("div");
+  cartCard.innerHTML = `
+           <div
+                class="flex items-center justify-between bg-green-100 shadow mt-2 rounded-md p-2"
+              >
+                <div>
+                  <h2 class="font-semibold">${name}</h2>
+                  <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>${price}</p>
+                </div>
+                <p >❌</p>
+            </div>
+  `;
+  cartContainer.append(cartCard);
 };
 
 loadCategories();
