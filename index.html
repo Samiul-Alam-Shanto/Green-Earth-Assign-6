@@ -112,47 +112,23 @@
     <main class="bg-[#F0FDF4] pt-20">
       <section>
         <h1 class="text-center text-2xl font-semibold">Choose Your Trees</h1>
-        <div class="w-11/12 mx-auto grid grid-cols-12 gap-2 mt-8">
-          <aside class="col-span-2 p-2 rounded-md">
+        <div class="w-[98%] mx-auto grid grid-cols-12 gap-2 mt-8">
+          <aside class="col-span-2 p-2 rounded-md space-y-0">
             <h2 class="font-bold">Categories</h2>
-            <div id="categories-container" class="mt-4">
-              <p class="cursor-pointer hover:bg-green-400 rounded-full p-2">
-                All Plants
+            <div>
+              <p
+                id="all-trees-btn"
+                class="cursor-pointer hover:bg-green-400 rounded-full p-2"
+              >
+                All Trees
               </p>
             </div>
+            <div id="categories-container"></div>
           </aside>
-          <div class="col-span-8 grid grid-cols-3 gap-3 p-5 rounded-md">
-            <div class="card bg-base-100 shadow-sm">
-              <figure>
-                <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                  alt="Shoes"
-                />
-              </figure>
-              <div class="card-body">
-                <h2 class="card-title">Card Title</h2>
-                <p class="text-gray-500">
-                  A card component has a figure, a body part, and inside body
-                  there are title and actions parts
-                </p>
-                <div class="card-actions justify-between items-center">
-                  <div class="btn rounded-full bg-green-200 text-green-600">
-                    Fashion
-                  </div>
-                  <div class="font-semibold">
-                    <i class="fa-solid fa-bangladeshi-taka-sign"></i>500
-                  </div>
-                </div>
-                <div>
-                  <button
-                    class="bg-green-600 w-full rounded-full p-2 text-white"
-                  >
-                    Add to Cart
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div
+            id="plants-card-container"
+            class="col-span-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 p-5 rounded-md"
+          ></div>
           <aside class="bg-white col-span-2 p-2 rounded-md">
             <h2 class="font-bold">Your Cart</h2>
           </aside>
