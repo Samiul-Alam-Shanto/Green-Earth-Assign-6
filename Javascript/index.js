@@ -62,7 +62,7 @@ const displayPlants = (plants) => {
                 />
               </figure>
               <div class="card-body">
-                <h2 class="card-title">${plant.name}</h2>
+                <h2 onclick="loadTreeDetails(${plant.id})" class="card-title">${plant.name}</h2>
                 <p class="text-gray-500">
                   ${plant.description}
                 </p>
@@ -97,5 +97,32 @@ const loadCategoryPlants = (id) => {
     .then((data) => displayPlants(data.plants));
 };
 
-loadAllPlants();
+//*load plant details
+
+const loadTreeDetails = (id) => {
+  const url = `https://openapi.programming-hero.com/api/plant/${id}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((details) => displayTreeDetails(details.plants));
+};
+
+//*display tree details
+
+const displayTreeDetails = (tree) => {
+  const treeDetailsContainer = document.getElementById(
+    "tree-details-container"
+  );
+  treeDetailsContainer.innerHTML = `
+            <div class="space-y-4 h-[400px]">
+              <h2 class="font-bold">${tree.name}</h2>
+              <img class="w-full h-[200px] rounded-xl" src="${tree.image}" alt="" />
+              <p class="font-medium text-gray-500"><span class="font-bold text-black">Category: </span>${tree.category}</p>
+              <p class="font-medium text-gray-500"><span class="font-bold text-black">Price: </span>${tree.price}</p>
+              <p class="font-medium text-gray-500"><span class="font-bold text-black">Description: </span>${tree.description}</p>
+            </div>
+            `;
+  document.getElementById("my_modal").showModal();
+};
+
 loadCategories();
+loadAllPlants();
