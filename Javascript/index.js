@@ -17,7 +17,7 @@ const displayCategories = (categories) => {
   for (let category of categories) {
     const categoryPTag = document.createElement("p");
     categoryPTag.innerHTML = `
-    <p onclick="loadCategoryPlants(${category.id})" class="cursor-pointer hover:bg-green-400 rounded-full p-2">
+    <p id="category-btn-${category.id}" onclick="loadCategoryPlants(${category.id})" class="category-btn cursor-pointer hover:bg-green-400 rounded-full p-2">
                 ${category.category_name}
               </p>
     `;
@@ -25,12 +25,18 @@ const displayCategories = (categories) => {
   }
 };
 
-//*load all plants
+//*load all plants & active style add
 
 const loadAllPlants = () => {
+  manageSpinner(true);
   fetch("https://openapi.programming-hero.com/api/plants")
     .then((res) => res.json())
-    .then((allPlants) => displayPlants(allPlants.plants));
+    .then((allPlants) => {
+      removeActive();
+      const allPlantsBtnClick = document.getElementById("all-trees-btn");
+      allPlantsBtnClick.classList.add("active");
+      displayPlants(allPlants.plants);
+    });
 };
 
 //*all tree btn display all trees
@@ -86,15 +92,29 @@ const displayPlants = (plants) => {
     `;
     plantsCardContainer.append(plantCard);
   }
+  manageSpinner(false);
 };
 
-//*load and display Category plants
+//*load and display Category plants  & active Button style
 
 const loadCategoryPlants = (id) => {
+  manageSpinner(true);
   const url = `https://openapi.programming-hero.com/api/category/${id}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayPlants(data.plants));
+    .then((data) => {
+      removeActive();
+      const categoryBtn = document.getElementById(`category-btn-${id}`);
+      categoryBtn.classList.add("active");
+      displayPlants(data.plants);
+    });
+};
+
+const removeActive = () => {
+  const categoryBtns = document.querySelectorAll(".category-btn");
+  categoryBtns.forEach((btn) => btn.classList.remove("active"));
+  const allPlantsBtn = document.getElementById("all-trees-btn");
+  allPlantsBtn.classList.remove("active");
 };
 
 //*load plant details
@@ -165,6 +185,18 @@ const removeCartCard = (e) => {
   const price = e.parentNode.childNodes[1].childNodes[3].innerText;
   let currentTotal = Number(totalPrice) - Number(price);
   document.getElementById("total-price").innerText = currentTotal;
+};
+
+// *spinner
+
+const manageSpinner = (status) => {
+  if (status == true) {
+    document.getElementById("spinner").classList.remove("hidden");
+    document.getElementById("plants-card-container").classList.add("hidden");
+  } else {
+    document.getElementById("plants-card-container").classList.remove("hidden");
+    document.getElementById("spinner").classList.add("hidden");
+  }
 };
 
 loadCategories();
