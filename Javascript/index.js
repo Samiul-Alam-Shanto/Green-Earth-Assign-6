@@ -132,17 +132,39 @@ const displayCart = (btn) => {
   const cartContainer = document.getElementById("cart-container");
   const cartCard = document.createElement("div");
   cartCard.innerHTML = `
-           <div
-                class="flex items-center justify-between bg-green-100 shadow mt-2 rounded-md p-2"
+           <div  
+                class=" flex items-center justify-between bg-green-100 shadow mt-2 rounded-md p-2"
               >
                 <div>
                   <h2 class="font-semibold">${name}</h2>
                   <p><i class="fa-solid fa-bangladeshi-taka-sign"></i>${price}</p>
                 </div>
-                <p >❌</p>
+                <p class="cursor-pointer" onclick="removeCartCard(this)">❌</p>
             </div>
   `;
   cartContainer.append(cartCard);
+
+  //*update the price of the cart total
+
+  const totalPrice = document.getElementById("total-price").innerText;
+  let currentTotal = Number(totalPrice) + Number(price);
+  document.getElementById("total-price").innerText = currentTotal;
+};
+
+//*remove cart card by clicking icon
+
+const removeCartCard = (e) => {
+  // remove the cart card
+
+  const cartDiv = e.parentNode.parentNode;
+  cartDiv.innerHTML = "";
+
+  //subtract the price from total price
+
+  const totalPrice = document.getElementById("total-price").innerText;
+  const price = e.parentNode.childNodes[1].childNodes[3].innerText;
+  let currentTotal = Number(totalPrice) - Number(price);
+  document.getElementById("total-price").innerText = currentTotal;
 };
 
 loadCategories();
